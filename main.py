@@ -36,7 +36,7 @@ class Pan(games.Sprite):
 
 class Pizza(games.Sprite):
     image = games.load_image("pizza.png")
-    speed = 1
+    speed = 4
 
     def __init__(self, x, y=90):
         super(Pizza, self).__init__(image=Pizza.image,
@@ -65,7 +65,7 @@ class Pizza(games.Sprite):
 class Chef(games.Sprite):
     image = games.load_image("chef.jpg")
 
-    def __init__(self, y=55, speed=2, odds_change=200):
+    def __init__(self, y=55, speed=4, odds_change=200):
         super(Chef, self).__init__(image=Chef.image,
                                    x=games.screen.width / 2,
                                    y=y,
@@ -89,7 +89,6 @@ class Chef(games.Sprite):
             new_pizza = Pizza(x=self.x)
             games.screen.add(new_pizza)
 
-            # set buffer to approx 30% of pizza height, regardless of pizza speed
             self.time_til_drop = int(new_pizza.height * 1.3 / Pizza.speed) + 1
 
     def handle_caught(self):
@@ -112,5 +111,4 @@ def main():
     games.screen.mainloop()
 
 
-# start it up!
 main()
